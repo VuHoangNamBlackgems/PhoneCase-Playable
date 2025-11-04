@@ -91,11 +91,11 @@ namespace Coffee.UIParticleExtensions
 
             Profiler.BeginSample("[UIParticle] MeshHelper > Combine Mesh");
             var cis = CombineInstanceArrayPool.Get(s_CachedInstance, count);
-            result.CombineMeshes(cis, false, true);
+          //  result.CombineMeshes(cis, false, true);
             cis.Clear();
             Profiler.EndSample();
 
-            result.RecalculateBounds();
+           // result.RecalculateBounds();
         }
 
         public static void DiscardTemporaryMesh(Mesh mesh)

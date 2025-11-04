@@ -7,23 +7,23 @@ public class DecorManager : MonoBehaviour
     public static DecorManager Instance { get; private set; }
     public event Action<DecorType, int> OnLevelChanged;
     
-    [Header("UI Elements")]
+  //  [Header("UI Elements")]
     [SerializeField] CanvasGroup header;         
     [SerializeField] RectTransform headerRt;
     [SerializeField] RectTransform[] cards;
     
     
-    [Header("Interior (Prefab theo level)")]
+   // [Header("Interior (Prefab theo level)")]
     [SerializeField] Transform interiorParent;
     [SerializeField] GameObject[] interiorObjects; 
     [SerializeField] int[] interiorCosts;          
 
-    [Header("Wall (Material theo level)")]
+   // [Header("Wall (Material theo level)")]
     [SerializeField] Texture[] wallTextures;
     [SerializeField] Material wallMaterial;     
     [SerializeField] int[] wallCosts;              
 
-    [Header("Floor (Material theo level)")]
+  //  [Header("Floor (Material theo level)")]
     [SerializeField] Texture[] floorTextures;
     [SerializeField] Material floorMaterial;    
     [SerializeField] int[] floorCosts;             
@@ -78,27 +78,55 @@ public class DecorManager : MonoBehaviour
     public int GetLevel(DecorType t) =>
         t == DecorType.Interior ? levelInterior : (t == DecorType.Wall ? levelWall : levelFloor);
 
-    public int MaxLevel(DecorType t) => t switch
+    public int MaxLevel(DecorType t)
     {
-        DecorType.Interior => Mathf.Max(1, interiorObjects?.Length ?? 1),
-        DecorType.Wall     => Mathf.Max(1, wallTextures?.Length  ?? 1),
-        DecorType.Floor    => Mathf.Max(1, floorTextures?.Length ?? 1),
-        _ => 1
-    };
+        switch (t)
+        {
+            case DecorType.Interior:
+                return Mathf.Max(1, interiorObjects != null ? interiorObjects.Length : 1);
+
+            case DecorType.Wall:
+                return Mathf.Max(1, wallTextures != null ? wallTextures.Length : 1);
+
+            case DecorType.Floor:
+                return Mathf.Max(1, floorTextures != null ? floorTextures.Length : 1);
+
+            default:
+                return 1;
+        }
+    }
 
     // cost để lên level kế tiếp; trả -1 nếu đã max
     public int GetNextCost(DecorType t)
     {
         int lv = GetLevel(t);
-        int[] costs = t switch
+        int[] costs = null;
+
+        switch (t)
         {
-            DecorType.Interior => interiorCosts,
-            DecorType.Wall     => wallCosts,
-            DecorType.Floor    => floorCosts,
-            _ => null
-        };
-        return (costs == null || lv >= costs.Length) ? -1 : Mathf.Max(0, costs[lv]);
+            case DecorType.Interior:
+                costs = interiorCosts;
+                break;
+
+            case DecorType.Wall:
+                costs = wallCosts;
+                break;
+
+            case DecorType.Floor:
+                costs = floorCosts;
+                break;
+
+            default:
+                costs = null;
+                break;
+        }
+
+        if (costs == null || lv >= costs.Length)
+            return -1;
+
+        return Mathf.Max(0, costs[lv]);
     }
+
 
     public bool TryUpgrade(DecorType t)
     {

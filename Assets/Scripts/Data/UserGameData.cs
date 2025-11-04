@@ -211,8 +211,8 @@ public static class UserGameData
     static string KeyUnlocked(ToolCategory cat, string id) => $"SHOP_{cat}_UNLOCK_{id}";
     static string KeySelected(ToolCategory cat) => $"SHOP_{cat}_SELECTED";
 
-    public static bool IsUnlocked(ToolCategory cat, string id)
-        => PlayerPrefs.GetInt(KeyUnlocked(cat, id), defaultValue: id.EndsWith("_01") ? 1 : 0) == 1; 
+   /* public static bool IsUnlocked(ToolCategory cat, string id)
+        => PlayerPrefs.GetInt(KeyUnlocked(cat, id), defaultValue: id.EndsWith("_01") ? 1 : 0) == 1; */
     // gợi ý: item _01 mặc định mở
 
     public static void SetUnlocked(ToolCategory cat, string id, bool value)

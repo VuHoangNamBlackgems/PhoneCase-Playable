@@ -534,35 +534,47 @@ public class GlueScreenStep : StepBase
         EnsureProbeRT();
         Graphics.Blit(src, _probeRT); // downsample
 
-#if UNITY_2018_2_OR_NEWER
-        AsyncGPUReadback.Request(_probeRT, 0, request =>
-        {
-            if (request.hasError) return;
-            var data = request.GetData<Color32>();
-            int len = data.Length; if (len == 0) return;
+        Texture2D tex = new Texture2D(_probeRT.width, _probeRT.height, TextureFormat.RGBA32, false, false);
 
-            int painted = 0;
-            for (int i = 0; i < len; i++)
+        var prev = RenderTexture.active;
+        RenderTexture.active = _probeRT;
+        tex.ReadPixels(new Rect(0, 0, _probeRT.width, _probeRT.height), 0, 0);
+        tex.Apply();
+        RenderTexture.active = prev;
+
+        Color32[] data = tex.GetPixels32();   // <--- COLOR32 ARRAY, KHÔNG PHẢI BYTE[]
+        int len = data.Length;
+        if (len == 0) return;
+
+        int painted = 0;
+        for (int i = 0; i < len; i++)
+        {
+            Color32 c = data[i];
+            float v;
+
+            switch (progressSource)
             {
-                var c = data[i];
-                float v;
-                switch (progressSource)
-                {
-                    case ProgressSource.Alpha:
-                        v = c.a / 255f; break;
-                    case ProgressSource.Luminance:
-                        v = (0.2126f * c.r + 0.7152f * c.g + 0.0722f * c.b) / 255f; break;
-                    default: // MaxRGBA
-                        byte m1 = (c.r > c.g) ? c.r : c.g;
-                        byte m2 = (c.b > c.a) ? c.b : c.a;
-                        byte m  = (m1 > m2) ? m1 : m2;
-                        v = m / 255f; break;
-                }
-                if (v >= pixelOnThreshold) painted++;
+                case ProgressSource.Alpha:
+                    v = c.a / 255f;
+                    break;
+
+                case ProgressSource.Luminance:
+                    v = (0.2126f * c.r + 0.7152f * c.g + 0.0722f * c.b) / 255f;
+                    break;
+
+                default: // MaxRGBA
+                    byte m1 = (c.r > c.g) ? c.r : c.g;
+                    byte m2 = (c.b > c.a) ? c.b : c.a;
+                    byte m = (m1 > m2) ? m1 : m2;
+                    v = m / 255f;
+                    break;
             }
-            _targetProgress = Mathf.Clamp01((float)painted * 2f / len);
-        });
-#endif
+
+            if (v >= pixelOnThreshold) painted++;
+        }
+
+        _targetProgress = Mathf.Clamp01((float)painted * 2f / len);
+
         _lastProbeTime = Time.unscaledTime;
         _sprayedThisFrame = false;
     }
@@ -590,7 +602,22 @@ public class GlueScreenStep : StepBase
         if (_probeRT != null) { _probeRT.Release(); _probeRT = null; }
     }
 
-    private IEnumerator AnimateFillRT_NoShader(RenderTexture rt, float duration, FillMode mode, bool invert, bool doComplete)
+    private static Material _fillMat;
+    private static Material FillMat
+    {
+        get
+        {
+            if (!_fillMat)
+            {
+                // UI/Default luôn exists trong WebGL + không cần vertex color
+                _fillMat = new Material(Shader.Find("UI/Default"));
+            }
+            return _fillMat;
+        }
+    }
+
+    private IEnumerator AnimateFillRT_NoShader(RenderTexture rt, float duration, FillMode mode, bool invert,
+        bool doComplete)
     {
         int w = rt.width;
         int h = rt.height;
@@ -604,30 +631,43 @@ public class GlueScreenStep : StepBase
             if (mode == FillMode.Horizontal)
             {
                 int px = Mathf.RoundToInt(w * k);
-                if (!invert) r = new Rect(0, 0, px, h);
-                else         r = new Rect(w - px, 0, px, h);
+                r = invert ? new Rect(w - px, 0, px, h) : new Rect(0, 0, px, h);
             }
             else
             {
                 int py = Mathf.RoundToInt(h * k);
-                if (!invert) r = new Rect(0, 0, w, py);
-                else         r = new Rect(0, h - py, w, py);
+                r = invert ? new Rect(0, h - py, w, py) : new Rect(0, 0, w, py);
             }
 
             var prev = RenderTexture.active;
             RenderTexture.active = rt;
 
-            GL.PushMatrix();
-            GL.LoadPixelMatrix(0, w, h, 0);
-            Graphics.DrawTexture(r, Texture2D.whiteTexture);
-            GL.PopMatrix();
+            // ✅ Convert RECT từ pixel sang normalized 0..1 (LoadOrtho)
+            float xMin = r.xMin / w;
+            float xMax = r.xMax / w;
+            float yMin = r.yMin / h;
+            float yMax = r.yMax / h;
 
+            GL.PushMatrix();
+            GL.LoadOrtho(); // ✅ Thay thế cho GL.LoadPixelMatrix
+
+            FillMat.SetPass(0);
+
+            GL.Begin(GL.QUADS);
+            GL.Vertex3(xMin, yMin, 0);
+            GL.Vertex3(xMax, yMin, 0);
+            GL.Vertex3(xMax, yMax, 0);
+            GL.Vertex3(xMin, yMax, 0);
+            GL.End();
+
+            GL.PopMatrix();
             RenderTexture.active = prev;
 
             t += Time.unscaledDeltaTime;
             yield return null;
         }
 
+        // ✅ Fill full khi xong animation
         Graphics.Blit(Texture2D.whiteTexture, rt);
 
         if (doComplete && !_completed)
@@ -636,6 +676,7 @@ public class GlueScreenStep : StepBase
             CompleteStep();
         }
     }
+
 
     [ContextMenu("DEBUG: Fill RT = 100%")]
     private void DebugFillFull()

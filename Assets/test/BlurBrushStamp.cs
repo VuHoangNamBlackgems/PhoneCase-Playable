@@ -55,7 +55,7 @@ public class BlurBrushStamp
     /// </summary>
     public void Stamp(RenderTexture paintRT, Vector2 uv01, float blurRadiusPx, float strength)
     {
-        if (!paintRT) return;
+      /*  if (!paintRT) return;
         InitIfNeeded(); if (!_mat) return;
 
         float w = paintRT.width, h = paintRT.height;
@@ -81,6 +81,6 @@ public class BlurBrushStamp
         _tmp = RenderTexture.GetTemporary(paintRT.descriptor);
         Graphics.Blit(paintRT, _tmp, _mat, 0);
         Graphics.Blit(_tmp, paintRT);
-        RenderTexture.ReleaseTemporary(_tmp);
+        RenderTexture.ReleaseTemporary(_tmp);*/
     }
 }

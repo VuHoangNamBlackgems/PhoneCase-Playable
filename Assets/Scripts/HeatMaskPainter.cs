@@ -27,7 +27,7 @@ public class HeatMaskPainter : MonoBehaviour
     bool _hasLast;
     float _worldBrushSize;
 
-    void Awake()
+   /* void Awake()
     {
         if (!mainCam) mainCam = Camera.main;
         if (heatCam) heatCam.targetTexture = heatMaskRT;
@@ -92,5 +92,5 @@ public class HeatMaskPainter : MonoBehaviour
         GL.Clear(true, true, Color.clear);
         RenderTexture.active = prev;
         _hasLast = false;
-    }
+    }*/
 }

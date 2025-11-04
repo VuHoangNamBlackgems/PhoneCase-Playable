@@ -10,7 +10,7 @@ public class HeatBlurUpdater : MonoBehaviour
     [Range(0,1)] public float strength = 1.0f;
     [Range(1,3)] public int iterations = 2;
 
-    void LateUpdate()
+   /* void LateUpdate()
     {
         // chỉ blur khi đang sấy (chuột trái) – tùy bạn bật điều kiện
         if (!Input.GetMouseButton(0)) return;
@@ -30,5 +30,5 @@ public class HeatBlurUpdater : MonoBehaviour
             Graphics.Blit(tmp,   blurRT, blurMat, 1);
         }
         RenderTexture.ReleaseTemporary(tmp);
-    }
+    }*/
 }

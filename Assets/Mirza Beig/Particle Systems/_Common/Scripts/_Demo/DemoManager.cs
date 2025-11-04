@@ -272,8 +272,8 @@ namespace MirzaBeig
 
                 public void SetAdvancedRendering(bool value)
                 {
-                    advancedRendering = value;
-                    mainCamera.allowHDR = value;
+                /*    advancedRendering = value;
+                    mainCamera.allowHDR = value;*/
 
                     if (value)
                     {

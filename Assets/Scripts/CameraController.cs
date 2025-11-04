@@ -125,7 +125,7 @@ public class CameraController : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        int w = overrideWidth > 0 ? overrideWidth : _captureCamera.pixelWidth;
+       /* int w = overrideWidth > 0 ? overrideWidth : _captureCamera.pixelWidth;
         int h = overrideHeight > 0 ? overrideHeight : _captureCamera.pixelHeight;
 
         var prevActiveRT = RenderTexture.active;
@@ -176,7 +176,7 @@ public class CameraController : MonoBehaviour
             RenderTexture.active = prevActiveRT;
             if (rt) rt.Release();
             Destroy(rt);
-        }
+        }*/
     }
 
     private void CheckvalidFolder()

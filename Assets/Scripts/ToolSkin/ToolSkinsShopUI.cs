@@ -165,7 +165,7 @@ public class ToolSkinsShopUI : MonoBehaviour
 
     void Rebuild()
     {
-        foreach (var c in _cells) if (c) Destroy(c.gameObject);
+       /* foreach (var c in _cells) if (c) Destroy(c.gameObject);
         _cells.Clear();
 
         var def = CurrDef;
@@ -207,7 +207,7 @@ public class ToolSkinsShopUI : MonoBehaviour
         {
             UserGameData.SetSelected(_current, firstUnlocked.id);
             MarkSelection(firstUnlocked.id);
-        }
+        }*/
     }
 
     void OnCellClicked(string skinId, bool unlocked)
@@ -230,11 +230,11 @@ public class ToolSkinsShopUI : MonoBehaviour
 
     void OnUnlockRandom()
     {
-        var def = CurrDef;
+     /*   var def = CurrDef;
         if (def == null) return;
 
         var locked = def.skins.Where(s => !UserGameData.IsUnlocked(_current, s.id)).ToList();
-        if (locked.Count == 0) {/* LogHelper.LogYellow("All items unlocked!");*/ return; }
+        if (locked.Count == 0) {*//* LogHelper.LogYellow("All items unlocked!");*//* return; }
 
         int balance = UserInventory.GetCurrencyValue(CurrencyType.CASH);
         if (balance < unlockPrice)
@@ -251,7 +251,7 @@ public class ToolSkinsShopUI : MonoBehaviour
         cell.PlayUnlockFX();
 
         UserGameData.SetSelected(_current, pick.id);
-        MarkSelection(pick.id);
+        MarkSelection(pick.id);*/
     }
 
     void OnClaimX2()

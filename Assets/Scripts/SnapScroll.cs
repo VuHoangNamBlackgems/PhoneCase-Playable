@@ -21,17 +21,18 @@ public class SnapScroll : MonoBehaviour
 
     public int currentNumber
     {
-        get => _currentNumber;
+        get { return _currentNumber; }
         set
         {
-            _currentNumber = value switch
-            {
-                _ when value > maxItem => maxItem,
-                _ when value < 0 => 0,
-                _ => value
-            };
+            if (value > maxItem)
+                _currentNumber = maxItem;
+            else if (value < 0)
+                _currentNumber = 0;
+            else
+                _currentNumber = value;
         }
     }
+
 
     float contentLength;
     float viewPortLength;

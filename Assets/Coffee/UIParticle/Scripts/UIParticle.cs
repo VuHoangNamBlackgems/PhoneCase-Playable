@@ -228,14 +228,14 @@ namespace Coffee.UIExtensions
         public void RefreshParticles(GameObject root)
         {
             if (!root) return;
-            root.GetComponentsInChildren(particles);
+         //   root.GetComponentsInChildren(particles);
             particles.RemoveAll(x => x.GetComponentInParent<UIParticle>() != this);
 
             foreach (var ps in particles)
             {
-                var tsa = ps.textureSheetAnimation;
+       /*         var tsa = ps.textureSheetAnimation;
                 if (tsa.mode == ParticleSystemAnimationMode.Sprites && tsa.uvChannelMask == (UVChannelFlags) 0)
-                    tsa.uvChannelMask = UVChannelFlags.UV0;
+                    tsa.uvChannelMask = UVChannelFlags.UV0;*/
             }
 
             particles.Exec(p => p.GetComponent<ParticleSystemRenderer>().enabled = !enabled);
@@ -417,13 +417,13 @@ namespace Coffee.UIExtensions
         {
             // #147: ParticleSystem creates Particles in wrong position during prewarm
             // #148: Particle Sub Emitter not showing when start game
-            var delayToPlay = particles.AnyFast(ps =>
+      /*      var delayToPlay = particles.AnyFast(ps =>
             {
                 ps.GetComponentsInChildren(false, s_ParticleSystems);
                 return s_ParticleSystems.AnyFast(p => p.isPlaying && (p.subEmitters.enabled || p.main.prewarm));
             });
             s_ParticleSystems.Clear();
-            if (!delayToPlay) yield break;
+            if (!delayToPlay) yield break;*/
 
             Stop();
             Clear();

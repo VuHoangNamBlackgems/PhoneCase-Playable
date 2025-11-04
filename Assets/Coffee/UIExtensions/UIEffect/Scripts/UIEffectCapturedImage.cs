@@ -357,7 +357,7 @@ namespace Coffee.UIExtensions
 #if UNITY_EDITOR
 			s_CommandBuffer.Blit(Resources.FindObjectsOfTypeAll<RenderTexture>().FirstOrDefault(x => x.name == "GameView RT"), s_CopyId);
 #else
-			s_CommandBuffer.Blit(BuiltinRenderTextureType.BindableTexture, s_CopyId);
+		//	s_CommandBuffer.Blit(BuiltinRenderTextureType.BindableTexture, s_CopyId);
 #endif
 
 			// Set properties for effect.

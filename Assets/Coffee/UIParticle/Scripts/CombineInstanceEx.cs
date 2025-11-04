@@ -26,7 +26,7 @@ namespace Coffee.UIParticleExtensions
                 {
                     var cis = CombineInstanceArrayPool.Get(combineInstances);
                     mesh = MeshPool.Rent();
-                    mesh.CombineMeshes(cis, true, true);
+                 //   mesh.CombineMeshes(cis, true, true);
                     transform = Matrix4x4.identity;
                     cis.Clear();
                     return;

@@ -223,8 +223,8 @@ namespace Coffee.UIExtensions
 
 #if UNITY_2018_3_OR_NEWER
                 // #102: Do not bake particle system to mesh when the alpha is zero.
-                if (Mathf.Approximately(particle.canvasRenderer.GetInheritedAlpha(), 0))
-                    continue;
+     /*           if (Mathf.Approximately(particle.canvasRenderer.GetInheritedAlpha(), 0))
+                    continue;*/
 #endif
 
                 // Bake main particles.
@@ -249,9 +249,9 @@ namespace Coffee.UIExtensions
                     var hash = currentPs.GetMaterialHash(true);
                     if (hash != 0)
                     {
-                        matrix = currentPs.main.simulationSpace == ParticleSystemSimulationSpace.Local && currentPs.trails.worldSpace
+                  /*      matrix = currentPs.main.simulationSpace == ParticleSystemSimulationSpace.Local && currentPs.trails.worldSpace
                             ? matrix * Matrix4x4.Translate(-currentPs.transform.position)
-                            : matrix;
+                            : matrix;*/
 
                         var m = MeshHelper.GetTemporaryMesh();
                         try

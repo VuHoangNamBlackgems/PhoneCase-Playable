@@ -224,24 +224,24 @@ namespace Spine.Unity.Examples {
 				System.Array.Copy(uvs, 0, this.uvBuffer.Items, combinedV, vertexCount);
 				System.Array.Copy(colors, 0, this.colorBuffer.Items, combinedV, vertexCount);
 
-				for (int s = 0, submeshCount = mesh.subMeshCount; s < submeshCount; ++s) {
+		/*		for (int s = 0, submeshCount = mesh.subMeshCount; s < submeshCount; ++s) {
 					int submeshIndexCount = (int)mesh.GetIndexCount(s);
 					int[] submeshIndices = mesh.GetIndices(s);
 					int[] dstIndices = this.indexBuffer.Items;
 					for (int i = 0; i < submeshIndexCount; ++i)
 						dstIndices[i + combinedI] = submeshIndices[i] + combinedV;
 					combinedI += submeshIndexCount;
-				}
+				}*/
 				combinedV += vertexCount;
 			}
 
 			Mesh combinedMesh = doubleBufferedMesh.GetNext();
 			combinedMesh.Clear();
 #if SET_VERTICES_HAS_LENGTH_PARAMETER
-			combinedMesh.SetVertices(this.positionBuffer.Items, 0, this.positionBuffer.Count);
+/*			combinedMesh.SetVertices(this.positionBuffer.Items, 0, this.positionBuffer.Count);
 			combinedMesh.SetUVs(0, this.uvBuffer.Items, 0, this.uvBuffer.Count);
             combinedMesh.SetColors(this.colorBuffer.Items.ToList(), 0, this.colorBuffer.Count);
-            combinedMesh.SetTriangles(this.indexBuffer.Items, 0, this.indexBuffer.Count, 0);
+            combinedMesh.SetTriangles(this.indexBuffer.Items, 0, this.indexBuffer.Count, 0);*/
 #else
 			// Note: excess already contains zero positions and indices after ExposedList.Resize().
 			combinedMesh.vertices = this.positionBuffer.Items;
@@ -259,9 +259,9 @@ namespace Spine.Unity.Examples {
 				if (mesh == null) continue;
 
 				vertexCount += mesh.vertexCount;
-				for (int s = 0, submeshCount = mesh.subMeshCount; s < submeshCount; ++s) {
+			/*	for (int s = 0, submeshCount = mesh.subMeshCount; s < submeshCount; ++s) {
 					indexCount += (int)mesh.GetIndexCount(s);
-				}
+				}*/
 			}
 		}
 	}

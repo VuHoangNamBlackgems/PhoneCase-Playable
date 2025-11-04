@@ -181,9 +181,9 @@ namespace Coffee.UIExtensions
 		{
 			if (_needUpload && _texture)
 			{
-				_needUpload = false;
+			/*	_needUpload = false;
 				_texture.LoadRawTextureData(_data);
-				_texture.Apply(false, false);
+				_texture.Apply(false, false);*/
 			}
 		}
 	}

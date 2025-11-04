@@ -14,7 +14,7 @@ public class GlobalPaintSoften
     /// <summary>
     /// Làm mềm toàn RT theo 2 trục; verticalBias > 1 -> mờ dọc nhiều hơn (giống ảnh #2).
     /// </summary>
-    public void Apply(RenderTexture rt, int iterations = 3, float radiusPx = 24f, float verticalBias = 2.8f)
+   /* public void Apply(RenderTexture rt, int iterations = 3, float radiusPx = 24f, float verticalBias = 2.8f)
     {
         if (!rt || !_mat) return;
         var desc = rt.descriptor;
@@ -35,5 +35,5 @@ public class GlobalPaintSoften
             radiusPx *= 1.2f; // mỗi vòng tăng nhẹ để lan xa hơn
         }
         RenderTexture.ReleaseTemporary(_tmp);
-    }
+    }*/
 }

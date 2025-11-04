@@ -1,0 +1,57 @@
+<dependencies>
+  <packages>
+    <package>androidx.constraintlayout:constraintlayout:2.1.4</package>
+    <package>androidx.lifecycle:lifecycle-process:2.6.2</package>
+    <package>com.adjust.sdk:adjust-android:5.4.2</package>
+    <package>com.android.installreferrer:installreferrer:2.2</package>
+    <package>com.google.ads.mediation:applovin:13.3.1.1</package>
+    <package>com.google.ads.mediation:facebook:6.20.0.0</package>
+    <package>com.google.ads.mediation:mintegral:16.9.91.1</package>
+    <package>com.google.ads.mediation:pangle:7.5.0.3.0</package>
+    <package>com.google.ads.mediation:unity:4.16.1.0</package>
+    <package>com.google.ads.mediation:vungle:7.5.1.0</package>
+    <package>com.google.android.gms:play-services-ads:24.5.0</package>
+    <package>com.google.android.gms:play-services-base:18.6.0</package>
+    <package>com.google.android.play:core-common:2.0.4</package>
+    <package>com.google.android.play:review:2.0.0</package>
+    <package>com.google.android.ump:user-messaging-platform:3.2.0</package>
+    <package>com.google.firebase:firebase-analytics:22.4.0</package>
+    <package>com.google.firebase:firebase-analytics-unity:12.10.0</package>
+    <package>com.google.firebase:firebase-app-unity:12.10.0</package>
+    <package>com.google.firebase:firebase-common:21.0.0</package>
+    <package>com.google.firebase:firebase-config:22.1.0</package>
+    <package>com.google.firebase:firebase-config-unity:12.10.0</package>
+    <package>com.google.firebase:firebase-iid:21.1.0</package>
+    <package>com.google.firebase:firebase-messaging:24.1.1</package>
+    <package>com.google.firebase:firebase-messaging-unity:12.10.0</package>
+    <package>com.google.flatbuffers:flatbuffers-java:1.12.0</package>
+    <package>com.unity3d.ads:unity-ads:4.16.1</package>
+  </packages>
+  <files>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/12.10.0/firebase-analytics-unity-12.10.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/12.10.0/firebase-analytics-unity-12.10.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/12.10.0/firebase-app-unity-12.10.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/12.10.0/firebase-app-unity-12.10.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-config-unity/12.10.0/firebase-config-unity-12.10.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-config-unity/12.10.0/firebase-config-unity-12.10.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-messaging-unity/12.10.0/firebase-messaging-unity-12.10.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-messaging-unity/12.10.0/firebase-messaging-unity-12.10.0.pom</file>
+  </files>
+  <settings>
+    <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
+    <setting name="bundleId" value="com.phonecase.custom.diy.maker" />
+    <setting name="explodeAars" value="True" />
+    <setting name="gradleBuildEnabled" value="True" />
+    <setting name="gradlePropertiesTemplateEnabled" value="True" />
+    <setting name="gradleTemplateEnabled" value="True" />
+    <setting name="installAndroidPackages" value="True" />
+    <setting name="localMavenRepoDir" value="Assets/GeneratedLocalRepo" />
+    <setting name="packageDir" value="Assets/Plugins/Android" />
+    <setting name="patchAndroidManifest" value="True" />
+    <setting name="patchMainTemplateGradle" value="True" />
+    <setting name="projectExportEnabled" value="False" />
+    <setting name="useFullCustomMavenRepoPathWhenExport" value="True" />
+    <setting name="useFullCustomMavenRepoPathWhenNotExport" value="False" />
+    <setting name="useJetifier" value="True" />
+  </settings>
+</dependencies>

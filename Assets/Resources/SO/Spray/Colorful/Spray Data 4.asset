@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e5229ba3d4aba49b9a8f71a5775308, type: 3}
+  m_Name: Spray Data 4
+  m_EditorClassIdentifier: 
+  id: 3
+  isUnlock: 1
+  icon: {fileID: 21300000, guid: bfe678a5d1d7ba445962920134b8633b, type: 3}
+  brush: {fileID: 198323042776811860, guid: bcbe84f0a5eeb3e43bbe37af73ba8c11, type: 3}
+  spray: {fileID: 198323042776811860, guid: 2304a7f59f6747848823d00d7726bfbc, type: 3}
+  textureSprayCan: {fileID: 2800000, guid: 7eaf7289452a3594bb67d409823bef39, type: 3}
+  textureOnCase: 0
+  textureCase: {fileID: 0}
+  BuyProperties:
+    CurrencyType: 0
+    Amount: 0

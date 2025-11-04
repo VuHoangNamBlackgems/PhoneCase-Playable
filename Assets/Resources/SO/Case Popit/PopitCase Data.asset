@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924ebdcb49e158a4085119877ee31610, type: 3}
+  m_Name: PopitCase Data
+  m_EditorClassIdentifier: 
+  id: 0
+  isUnlock: 1
+  icon: {fileID: 21300000, guid: 8c4149134b5e8e948a7d43a0e7291601, type: 3}
+  casePopit: {fileID: 686109019716584365, guid: 411a910e49a306042b204eee135b8930, type: 3}
+  BuyProperties:
+    CurrencyType: 0
+    Amount: 0

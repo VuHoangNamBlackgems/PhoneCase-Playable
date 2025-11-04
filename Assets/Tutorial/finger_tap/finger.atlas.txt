@@ -1,0 +1,13 @@
+finger.png
+size:268,164
+filter:Linear,Linear
+pma:true
+1
+bounds:150,2,60,42
+offsets:2,0,62,42
+2
+bounds:2,11,151,146
+offsets:11,1,163,147
+rotate:90
+Ellipse 1
+bounds:150,46,116,116

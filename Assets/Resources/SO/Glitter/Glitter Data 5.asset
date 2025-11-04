@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b9f0b53656839488c969339e2ed0e6, type: 3}
+  m_Name: Glitter Data 5
+  m_EditorClassIdentifier: 
+  id: 2
+  isUnlock: 0
+  icon: {fileID: 21300000, guid: b3f4983f0ee548845ad6761418eb39ef, type: 3}
+  brush: {fileID: 198985323920766671, guid: 2e74633beca807549a4fbe03e2f14e99, type: 3}
+  textureGlitter: {fileID: 2800000, guid: 1449cd0d913f9b540bfda41059277b26, type: 3}
+  textureColor: {r: 0.7607844, g: 0.121568635, b: 0.9960785, a: 1}
+  BuyProperties:
+    CurrencyType: 0
+    Amount: 0

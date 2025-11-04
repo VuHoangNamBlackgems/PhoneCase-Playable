@@ -56,15 +56,15 @@ public class CustomerOrderManager : MonoBehaviour
         float delay = 0f;
         isCompleteItem = false;
         countItem = 0;
-        var level = UserLevel.Level;
-        if (level > 3)
-        {
+        //var level = UserLevel.Level;
+/*        if (level > 3)
+        {*/
             maxItems = 2;
-        }
+       /* }
         else
         {
             maxItems = 1;
-        }
+        }*/
         item.gameObject.SetActive(true);
         item.SetupOrder(orders.id, orders.icon);
 

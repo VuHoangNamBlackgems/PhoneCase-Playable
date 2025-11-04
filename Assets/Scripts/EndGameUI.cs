@@ -110,16 +110,16 @@ public class EndGameUI : MonoBehaviour
     {
         Gameplay.instance.Complete();
         
-        int prevLv = UserLevel.Level;
+       // int prevLv = UserLevel.Level;
         int ups = UserLevel.AddPlay();      
         if (ups <= 0) return;
 
-        for (int i = 1; i <= ups; i++)
+     /*   for (int i = 1; i <= ups; i++)
         {
-            int reachedLv = prevLv + i;
-            LevelRewardsManager.instance.OnLevelReached(reachedLv);
+         //   int reachedLv = prevLv + i;
+        //    LevelRewardsManager.instance.OnLevelReached(reachedLv);
         }
-
+*/
         Hide();
     }
 

@@ -9,7 +9,6 @@ namespace Coffee.UIExtensions.Editors
 	/// <summary>
 	/// UIEffect editor.
 	/// </summary>
-	[CustomEditor(typeof(UIEffect))]
 	[CanEditMultipleObjects]
 	public class UIEffectEditor : BaseMeshEffectEditor
 	{
@@ -59,9 +58,9 @@ namespace Coffee.UIExtensions.Editors
 				EditorGUI.indentLevel++;
 
 				SerializedProperty spColor = serializedObject.FindProperty(colorProperty);
-				if (spColor == null && serializedObject.targetObject is UIEffect) {
+			/*	if (spColor == null && serializedObject.targetObject is UIEffect) {
 					spColor = new SerializedObject (serializedObject.targetObjects.Select(x=>(x as UIEffect).targetGraphic).ToArray()).FindProperty(colorProperty);
-				}
+				}*/
 
 				EditorGUI.BeginChangeCheck ();
 				EditorGUI.showMixedValue = spColor.hasMultipleDifferentValues;
@@ -120,7 +119,7 @@ namespace Coffee.UIExtensions.Editors
 		/// </summary>
 		public override void OnInspectorGUI()
 		{
-			foreach (var d in targets.Cast<UIEffect> ())
+			/*foreach (var d in targets.Cast<UIEffect> ())
 			{
 				var mat = d.material;
 				if (d.isTMPro && mat)
@@ -140,11 +139,11 @@ namespace Coffee.UIExtensions.Editors
 					}
 				}
 			}
-
+*/
 
 			serializedObject.Update();
-			bool isAnyTMPro = targets.Cast<UIEffect>().Any(x => x.isTMPro);
-			var c = target as UIEffect;
+		/*	bool isAnyTMPro = targets.Cast<UIEffect>().Any(x => x.isTMPro);
+			var c = target as UIEffect;*/
 
 			//================
 			// Effect material.
@@ -157,24 +156,24 @@ namespace Coffee.UIExtensions.Editors
 			//================
 			// Effect setting.
 			//================
-			var spToneMode = serializedObject.FindProperty("m_EffectMode");
+		/*	var spToneMode = serializedObject.FindProperty("m_EffectMode");
 			using (new EditorGUI.DisabledGroupScope(isAnyTMPro))
-				EditorGUILayout.PropertyField(spToneMode);
+				EditorGUILayout.PropertyField(spToneMode);*/
 
 			// When tone is enable, show parameters.
-			if (spToneMode.intValue != (int)EffectMode.None)
+		/*	if (spToneMode.intValue != (int)EffectMode.None)
 			{
 				EditorGUI.indentLevel++;
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_EffectFactor"));
 				EditorGUI.indentLevel--;
-			}
+			}*/
 
 			//================
 			// Color setting.
 			//================
-			var spColorMode = serializedObject.FindProperty("m_ColorMode");
+/*			var spColorMode = serializedObject.FindProperty("m_ColorMode");
 			using (new EditorGUI.DisabledGroupScope(isAnyTMPro))
-				EditorGUILayout.PropertyField(spColorMode);
+				EditorGUILayout.PropertyField(spColorMode);*/
 
 			// When color is enable, show parameters.
 			//if (spColorMode.intValue != (int)ColorMode.Multiply)
@@ -182,9 +181,9 @@ namespace Coffee.UIExtensions.Editors
 				EditorGUI.indentLevel++;
 
 				SerializedProperty spColor = serializedObject.FindProperty("m_Color");
-				if (spColor == null && serializedObject.targetObject is UIEffect) {
+			/*	if (spColor == null && serializedObject.targetObject is UIEffect) {
 					spColor = new SerializedObject (serializedObject.targetObjects.Select(x=>(x as UIEffect).targetGraphic).ToArray()).FindProperty(!isAnyTMPro ? "m_Color" : "m_fontColor");
-				}
+				}*/
 
 				EditorGUI.BeginChangeCheck ();
 				EditorGUI.showMixedValue = spColor.hasMultipleDifferentValues;
@@ -204,12 +203,12 @@ namespace Coffee.UIExtensions.Editors
 			//================
 			// Blur setting.
 			//================
-			var spBlurMode = serializedObject.FindProperty("m_BlurMode");
+	/*		var spBlurMode = serializedObject.FindProperty("m_BlurMode");
 			using (new EditorGUI.DisabledGroupScope(isAnyTMPro))
-				EditorGUILayout.PropertyField(spBlurMode);
+				EditorGUILayout.PropertyField(spBlurMode);*/
 
 			// When blur is enable, show parameters.
-			if (spBlurMode.intValue != (int)BlurMode.None)
+			/*if (spBlurMode.intValue != (int)BlurMode.None)
 			{
 				EditorGUI.indentLevel++;
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_BlurFactor"));
@@ -218,14 +217,14 @@ namespace Coffee.UIExtensions.Editors
 				using (new EditorGUI.DisabledGroupScope(isAnyTMPro))
 					EditorGUILayout.PropertyField(spAdvancedBlur);
 				EditorGUI.indentLevel--;
-			}
+			}*/
 
 			serializedObject.ApplyModifiedProperties();
 
-			c.ShowTMProWarning (_shader, _mobileShader, _spriteShader, mat => {});
+			//c.ShowTMProWarning (_shader, _mobileShader, _spriteShader, mat => {});
 			ShowCanvasChannelsWarning ();
 
-			ShowMaterialEditors (c.materials, 1, c.materials.Length - 1);
+			//ShowMaterialEditors (c.materials, 1, c.materials.Length - 1);
 
 			serializedObject.ApplyModifiedProperties();
 		}

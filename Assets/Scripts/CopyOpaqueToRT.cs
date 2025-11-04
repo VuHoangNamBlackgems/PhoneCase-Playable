@@ -17,7 +17,7 @@ public class CopyOpaqueToRT : MonoBehaviour
     {
         cam = GetComponent<Camera>();
         opaqueTexID = Shader.PropertyToID(globalTexName);
-        Build();
+     //   Build();
     }
 
     void OnDisable()
@@ -27,7 +27,7 @@ public class CopyOpaqueToRT : MonoBehaviour
 
     void Build()
     {
-        Teardown();
+       /* Teardown();
 
         cb = new CommandBuffer { name = "Copy Opaque To RT" };
         // Allocate RT matching camera
@@ -38,7 +38,7 @@ public class CopyOpaqueToRT : MonoBehaviour
         cb.SetGlobalTexture(globalTexName, opaqueTexID);
 
         cam.AddCommandBuffer(CameraEvent.AfterForwardOpaque, cb);
-        added = true;
+        added = true;*/
     }
 
     void Teardown()

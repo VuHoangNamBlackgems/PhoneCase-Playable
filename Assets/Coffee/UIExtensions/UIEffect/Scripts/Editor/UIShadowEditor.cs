@@ -11,11 +11,11 @@ namespace Coffee.UIExtensions.Editors
 	[CanEditMultipleObjects]
 	public class UIShadowEditor : Editor
 	{
-		UIEffect uiEffect;
+	//	UIEffect uiEffect;
 
 		void OnEnable()
 		{
-			uiEffect = (target as UIShadow).GetComponent<UIEffect>();
+			//uiEffect = (target as UIShadow).GetComponent<UIEffect>();
 
 		}
 
@@ -41,10 +41,10 @@ namespace Coffee.UIExtensions.Editors
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_EffectColor"));
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_UseGraphicAlpha"));
 
-				if (uiEffect && uiEffect.blurMode != BlurMode.None)
+				/*if (uiEffect && uiEffect.blurMode != BlurMode.None)
 				{
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("m_BlurFactor"));
-				}
+				}*/
 				EditorGUI.indentLevel--;
 			}
 

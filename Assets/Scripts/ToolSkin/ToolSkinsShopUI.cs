@@ -67,7 +67,7 @@ public class ToolSkinsShopUI : MonoBehaviour
             case ToolCategory.Table: tabTable.isOn = true; break;
         }
 
-        btnUnlockRandom.onClick.AddListener(OnUnlockRandom);
+       // btnUnlockRandom.onClick.AddListener(OnUnlockRandom);
         btnClaimX2.onClick.AddListener(OnClaimX2);
 
        // Rebuild();

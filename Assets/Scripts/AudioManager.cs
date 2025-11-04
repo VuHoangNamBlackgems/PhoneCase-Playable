@@ -64,34 +64,13 @@ public class AudioManager : MonoBehaviour
         sfxList.Add(new Pair<AudioSource, float>(Complete, menuSoundVolume));
         sfxList.Add(new Pair<AudioSource, float>(Click, menuSoundVolume));
     }
-    
-    public bool SfxIsOn
-    {
-        get => UserSettings.GetSoundVolume();
-        set
-        {
-             foreach (Pair<AudioSource, float> sfx in sfxList)
-             {
-                 sfx.First.mute = value;
-             }
-            
-             UserSettings.SetSoundVolume(value);
-        }
-    }
 
-    public bool MusicIsOn
-    {
-        get => UserSettings.GetMusicVolume();
-        set
-        {
-            foreach (Pair<AudioSource, float> music in musicList)
-            {
-                music.First.mute = value;
-            }
+    public bool SfxIsOn;
 
-            UserSettings.SetMusicVolume(value);
-        }
-    }
+
+
+    public bool MusicIsOn;
+   
 
     public void PlayMusic()
     {

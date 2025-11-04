@@ -9,20 +9,20 @@ public static class UserLevel
     class Data { public int level = 0; public int playsAtLevel; }
 
     static Data _d;
-    static Data D => _d ?? (_d = Load());
+    //static Data D => _d ?? (_d = Load());
 
-    static Data Load()
+/*    static Data Load()
     {
         var json = PlayerPrefs.GetString(KEY, "");
-        return string.IsNullOrEmpty(json) ? new Data{ level = 0, playsAtLevel = 0 }
+        return string.IsNullOrEmpty(json) ? new Data { level = 0, playsAtLevel = 0 }
             : JsonUtility.FromJson<Data>(json);
-    }
-    static void Save() { PlayerPrefs.SetString(KEY, JsonUtility.ToJson(D)); PlayerPrefs.Save(); }
+    }*/
+   // static void Save() { PlayerPrefs.SetString(KEY, JsonUtility.ToJson(D)); PlayerPrefs.Save(); }
 
     // ====== API bạn dùng ======
-    public static int Level => D.level;
-    public static int PlaysAtLevel => D.playsAtLevel;
-    public static int RequiredPlays => RequiredPlaysForLevel(D.level);
+   // public static int Level => D.level;
+  /*  public static int PlaysAtLevel => D.playsAtLevel;
+    public static int RequiredPlays => RequiredPlaysForLevel(D.level);*/
 
     // Quy tắc theo bảng
     public static int RequiredPlaysForLevel(int level)
@@ -35,24 +35,24 @@ public static class UserLevel
     public static int AddPlay(int n = 1)
     {
         int ups = 0;
-        D.playsAtLevel += n;
+      //  D.playsAtLevel += n;
 
         // Nếu dư màn thì “carry over” sang level kế (giữ tính công bằng)
-        while (D.playsAtLevel >= RequiredPlaysForLevel(D.level))
+ /*       while (D.playsAtLevel >= RequiredPlaysForLevel(D.level))
         {
             D.playsAtLevel -= RequiredPlaysForLevel(D.level);
             D.level++;
             UserTracking.LogLevelUp(D.level);
             ups++;
-        }
+        }*/
 
-        Save();
+       // Save();
         return ups;
     }
 
     // Cho UI thanh tiến độ
-    public static float Progress01()
-        => (float)D.playsAtLevel / Mathf.Max(1, RequiredPlaysForLevel(D.level));
+   /* public static float Progress01()
+        => (float)D.playsAtLevel / Mathf.Max(1, RequiredPlaysForLevel(D.level));*/
 
-    public static void ResetAll() { _d = new Data(); Save(); }
+   // public static void ResetAll() { _d = new Data(); Save(); }
 }

@@ -12,7 +12,7 @@ public class GlitterStickOnHit : MonoBehaviour {
     Queue<GameObject> pool = new Queue<GameObject>();
     List<ParticleCollisionEvent> events = new List<ParticleCollisionEvent>();
 
-    void Start(){
+   /* void Start(){
         if (!ps) ps = GetComponent<ParticleSystem>();
         for (int i=0;i<poolSize;i++){
             var g = Instantiate(glitterPiecePrefab, parentOnCase);
@@ -42,5 +42,5 @@ public class GlitterStickOnHit : MonoBehaviour {
         foreach (Transform t in parentOnCase){
             if (t.gameObject.activeSelf){ t.gameObject.SetActive(false); pool.Enqueue(t.gameObject); }
         }
-    }
+    }*/
 }

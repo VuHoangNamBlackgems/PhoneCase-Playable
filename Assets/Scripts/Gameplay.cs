@@ -73,57 +73,7 @@ public class Gameplay : MonoBehaviour
         //CallAdsManager.CloseONA("menu");
         IngameBG.gameObject.SetActive(true);
         UserTracking.CurrentCustomer = "normal_0";
-        if (UserLevel.Level == 5 && PlayerPrefs.GetInt("FIX_PHONE_1", 0) == 0)
-        {
-            isMinigameFixPhone = true;
-            GameUI.instance.HideAll();
-            stepFlow.Steps = BuildStepsForMode(fixPhone1);
-            UserTracking.CurrentMode = GAMEMODE.FIX_PHONE_1;
-
-            CameraController.instance.MoveCamera(CameraController.instance.MainCam.transform, CAMERA_POINT.PREVIEW);
-            SpawnPhoneCaseFix();
-            phoneCase.SetUpVerticalPos(() =>
-            {
-                phoneCase.transform.DOLocalRotate(Vector3.up * 360f, 0.6f, RotateMode.LocalAxisAdd).SetEase(Ease.OutCubic);
-                DOVirtual.DelayedCall(1.5f, () =>
-                {
-                    CameraController.instance.MoveCamera(CameraController.instance.MainCam.transform, CAMERA_POINT.ONTABLE);
-                    phoneCase.SetupHorizonPos(() =>
-                    {
-                        UserTracking.LevelStart(stepFlow.Steps.Count);
-                        stepFlow.JumpTo(0);
-                    });
-                });
-            });
-            //CallAdsManager.instance.ShowBannerMenu();
-            return;
-        }
         
-        if (UserLevel.Level == 1)
-        {
-            GameUI.instance.HideAll();
-            stepFlow.Steps = BuildStepsForMode(spray);
-            UserTracking.CurrentMode = GAMEMODE.SPRAY;
-            
-            
-            CameraController.instance.MoveCamera(CameraController.instance.MainCam.transform, CAMERA_POINT.PREVIEW);
-            SpawnPhoneCase();
-            phoneCase.SetUpVerticalPos(() =>
-            {
-                phoneCase.transform.DOLocalRotate(Vector3.up * 360f, 0.6f, RotateMode.LocalAxisAdd).SetEase(Ease.OutCubic);
-                DOVirtual.DelayedCall(1.5f, () =>
-                {
-                    CameraController.instance.MoveCamera(CameraController.instance.MainCam.transform, CAMERA_POINT.ONTABLE);
-                    phoneCase.SetupHorizonPos(() =>
-                    {
-                        UserTracking.LevelStart(stepFlow.Steps.Count);
-                        stepFlow.JumpTo(0);
-                    });
-                });
-            });
-            //CallAdsManager.instance.ShowBannerMenu();
-            return;
-        }
         
       //  CallAdsManager.ShowInter("start_game");
         GameUI.instance.Show(UIScreen.ChooseMode);

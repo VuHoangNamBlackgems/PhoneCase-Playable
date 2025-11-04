@@ -240,8 +240,8 @@ namespace Spine.Unity.Examples {
 #if SET_VERTICES_HAS_LENGTH_PARAMETER
 			combinedMesh.SetVertices(this.positionBuffer.Items, 0, this.positionBuffer.Count);
 			combinedMesh.SetUVs(0, this.uvBuffer.Items, 0, this.uvBuffer.Count);
-			combinedMesh.SetColors(this.colorBuffer.Items, 0, this.colorBuffer.Count);
-			combinedMesh.SetTriangles(this.indexBuffer.Items, 0, this.indexBuffer.Count, 0);
+            combinedMesh.SetColors(this.colorBuffer.Items.ToList(), 0, this.colorBuffer.Count);
+            combinedMesh.SetTriangles(this.indexBuffer.Items, 0, this.indexBuffer.Count, 0);
 #else
 			// Note: excess already contains zero positions and indices after ExposedList.Resize().
 			combinedMesh.vertices = this.positionBuffer.Items;

@@ -14,7 +14,7 @@ public static class UserSettings
     const string DATA_ID = "UserSetting";
     private static Data _data;
 
-    public static bool GetSoundVolume()
+  /*  public static bool GetSoundVolume()
     {
         Data data = GetData();
         return data.SoundVolume;
@@ -31,32 +31,32 @@ public static class UserSettings
         Data data = GetData();
         return data.Vibra;
     }
-    
+    */
     public static void SetSoundVolume(bool value)
     {
-        Data _data = GetData();
-        _data.SoundVolume = value;
+/*        Data _data = GetData();
+        _data.SoundVolume = value;*/
     }
     
     public static void SetMusicVolume(bool value)
     {
-        Data _data = GetData();
-        _data.MusicVolume = value;
+/*        Data _data = GetData();
+        _data.MusicVolume = value;*/
     }
     
     public static void SetVibra(bool value)
     {
-        Data _data = GetData();
-        _data.Vibra = value;
+      /*  Data _data = GetData();
+        _data.Vibra = value;*/
     }
         
         
     public static void Save()
     {
-        PlayerPrefs.SetString(DATA_ID, JsonUtility.ToJson(GetData()));
+     //   PlayerPrefs.SetString(DATA_ID, JsonUtility.ToJson(GetData()));
     }
     
-    public static Data GetData()
+   /* public static Data GetData()
     {
         if (_data == null)
         {
@@ -64,5 +64,5 @@ public static class UserSettings
             if(_data == null) _data = new Data();
         }
         return _data;
-    }
+    }*/
 }

@@ -193,12 +193,12 @@ namespace Coffee.UIExtensions
 		{
 			base.OnEnable();
 
-			_uiEffect = GetComponent<UIEffect>();
+/*			_uiEffect = GetComponent<UIEffect>();
 			if (_uiEffect)
 			{
 				ptex = _uiEffect.ptex;
 				ptex.Register(this);
-			}
+			}*/
 
 			#if TMP_PRESENT
 			if (isTMPro)
@@ -211,7 +211,7 @@ namespace Coffee.UIExtensions
 		protected override void OnDisable()
 		{
 			base.OnDisable();
-			_uiEffect = null;
+			//_uiEffect = null;
 			if (ptex != null)
 			{
 				ptex.Unregister(this);
@@ -286,7 +286,7 @@ namespace Coffee.UIExtensions
 			// Append shadow vertices.
 			//================================
 			{
-				_uiEffect = _uiEffect ?? GetComponent<UIEffect>();
+				/*_uiEffect = _uiEffect ?? GetComponent<UIEffect>();
 				var start = s_Verts.Count - _graphicVertexCount;
 				var end = s_Verts.Count;
 
@@ -297,7 +297,7 @@ namespace Coffee.UIExtensions
 					ptex.SetData(this, 2, m_BlurFactor);	// param.z : blur factor
 				}
 
-				_ApplyShadow(s_Verts, effectColor, ref start, ref end, effectDistance, style, useGraphicAlpha);
+				_ApplyShadow(s_Verts, effectColor, ref start, ref end, effectDistance, style, useGraphicAlpha);*/
 			}
 
 			vh.Clear();
@@ -306,7 +306,7 @@ namespace Coffee.UIExtensions
 			s_Verts.Clear();
 		}
 
-		UIEffect _uiEffect;
+	//	UIEffect _uiEffect;
 
 		//################################
 		// Private Members.
@@ -365,9 +365,9 @@ namespace Coffee.UIExtensions
 			if (verts.Capacity < neededCapacity)
 				verts.Capacity *= 2;
 
-			float normalizedIndex = ptex != null && _uiEffect && _uiEffect.isActiveAndEnabled
+		/*	float normalizedIndex = ptex != null && _uiEffect && _uiEffect.isActiveAndEnabled
 				? ptex.GetNormalizedIndex(this)
-				: -1;
+				: -1;*/
 
 			// Add 
 			UIVertex vt = default(UIVertex);
@@ -397,13 +397,13 @@ namespace Coffee.UIExtensions
 
 
 				// Set UIEffect prameters
-				if (0 <= normalizedIndex)
+		/*		if (0 <= normalizedIndex)
 				{
 					vt.uv0 = new Vector2(
 						vt.uv0.x,
 						normalizedIndex
 					);
-				}
+				}*/
 
 				verts[i] = vt;
 			}

@@ -32,10 +32,10 @@ public class FaceExpressions : MonoBehaviour
     void CacheBlendshapeIndex()
     {
         _idx.Clear();
-        if (!head || !head.sharedMesh) return;
+/*        if (!head || !head.sharedMesh) return;
         var m = head.sharedMesh;
         for (int i = 0; i < m.blendShapeCount; i++)
-            _idx[m.GetBlendShapeName(i)] = i;
+            _idx[m.GetBlendShapeName(i)] = i;*/
     }
 
     // ============= API chính =============

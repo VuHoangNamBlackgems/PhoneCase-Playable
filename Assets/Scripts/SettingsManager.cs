@@ -27,30 +27,30 @@ public class SettingsManager : MonoBehaviour
 
     void ApplyAllFromSaved()
     {
-        if (_soundIconView) _soundIconView.Set(UserSettings.GetSoundVolume());
-        if (_musicIconView) _musicIconView.Set(UserSettings.GetMusicVolume());
-        if (_vibraIconView) _vibraIconView.Set(UserSettings.GetVibra());
+       // if (_soundIconView) _soundIconView.Set(UserSettings.GetSoundVolume());
+      //  if (_musicIconView) _musicIconView.Set(UserSettings.GetMusicVolume());
+ //       if (_vibraIconView) _vibraIconView.Set(UserSettings.GetVibra());
     }
 
     public void ToggleSfx()
     {
-        bool newState = !UserSettings.GetSoundVolume();
+      /*  bool newState = !UserSettings.GetSoundVolume();
         UserSettings.SetSoundVolume(newState);
-        if (_soundIconView) _soundIconView.Set(newState);
+        if (_soundIconView) _soundIconView.Set(newState);*/
     }
 
     public void ToggleMusic()
     {
-        bool newState = !UserSettings.GetMusicVolume();
+       /* bool newState = !UserSettings.GetMusicVolume();
         UserSettings.SetMusicVolume(newState);
-        if (_musicIconView) _musicIconView.Set(newState);
+        if (_musicIconView) _musicIconView.Set(newState);*/
     }
 
     public void ToggleVibration()
     {
-        bool newState = !UserSettings.GetVibra();
+/*        bool newState = !UserSettings.GetVibra();
         UserSettings.SetVibra(newState);
-        if (_vibraIconView) _vibraIconView.Set(newState);
+        if (_vibraIconView) _vibraIconView.Set(newState);*/
 
 #if UNITY_ANDROID || UNITY_IOS
         if (newState) Handheld.Vibrate();
